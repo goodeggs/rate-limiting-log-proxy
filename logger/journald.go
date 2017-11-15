@@ -62,10 +62,11 @@ func NewJournaldLogger(info dockerLogger.Info) *JournaldLogger {
 	}
 
 	vars := map[string]string{
-		"CONTAINER_ID":      info.ContainerID[:12],
-		"CONTAINER_ID_FULL": info.ContainerID,
-		"CONTAINER_NAME":    info.Name(),
-		"CONTAINER_TAG":     tag,
+		"CONTAINER_ID":         info.ContainerID[:12],
+		"CONTAINER_ID_FULL":    info.ContainerID,
+		"CONTAINER_IMAGE_NAME": info.ContainerImageName,
+		"CONTAINER_NAME":       info.Name(),
+		"CONTAINER_TAG":        tag,
 	}
 
 	if taskARN, ok := info.ContainerLabels[TaskARNLabel]; ok {
